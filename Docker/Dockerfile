@@ -12,3 +12,10 @@ RUN \
 	echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
 	apt-get update && \
 	apt-get install --assume-yes oracle-java6-installer
+
+# Download openKM
+RUN \
+	cd /tmp/ && \
+	wget -O openkm.run 'http://sourceforge.net/projects/openkm/files/6.3.1/openkm-6.3.1-community-linux-x64-installer.run/download' && \
+	chmod +x openkm.run && \
+	./openkm.run
