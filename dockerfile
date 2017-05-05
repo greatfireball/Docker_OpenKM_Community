@@ -23,5 +23,11 @@ RUN apt-get install -y openjdk-8-jdk openjdk-8-jre
 
 RUN apt-get -y install libreoffice imagemagick swftools liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar
 
+ENV CATALINA_HOME /usr/local/tomcat/
+ENV JAVA_HOME /usr/local/java
+ENV OPENJDK_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
+
+RUN ln -s $OPENJDK_HOME $JAVA_HOME
+
 CMD /usr/local/tomcat/bin/catalina.sh run
 
