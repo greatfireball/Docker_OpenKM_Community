@@ -44,5 +44,11 @@ ENV PATH $PATH:$CATALINA_HOME/bin
 
 VOLUME $TOMCAT_HOME/repository
 
-CMD  $TOMCAT_HOME/bin/catalina.sh run
+# prepare Postgres usage
+RUN sed -i 's/hibernate.dialect=.*/hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect/' $TOMCAT_HOME/OpenKM.cfg
+
+# Add the run-script
+ADD run-script.sh $TOMCAT_HOME/run-script.sh
+
+CMD  $TOMCAT_HOME/run-script.sh
 
