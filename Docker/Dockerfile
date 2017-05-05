@@ -24,6 +24,9 @@ RUN apt-get install -y openjdk-8-jdk openjdk-8-jre
 # install required software
 RUN apt-get -y install libreoffice imagemagick swftools liblog4j1.2-java libgnumail-java ant curl unzip sudo tar && apt-get clean
 
+#install OCR software and English and German dictionaries
+RUN apt-get install -y tesseract-ocr tesseract-ocr-eng tesseract-ocr-deu && apt-get clean
+
 ENV CATALINA_HOME /usr/local/tomcat/
 ENV JAVA_HOME /usr/local/java
 ENV OPENJDK_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
