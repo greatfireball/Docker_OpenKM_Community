@@ -30,6 +30,9 @@ ENV OPENJDK_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
 RUN ln -s $OPENJDK_HOME $JAVA_HOME
 RUN wget -O /usr/local/openkm-tomcat-bundle.zip https://sourceforge.net/projects/openkm/files/6.3.2/openkm-6.3.2-community-tomcat-bundle.zip/download && unzip /usr/local/openkm-tomcat-bundle.zip -d /usr/local/ && rm /usr/local/openkm-tomcat-bundle.zip && ln -s $CATALINA_HOME /opt/openkm
 
+RUN wget -O /tmp/openkm-6.3.3.zip https://sourceforge.net/projects/openkm/files/6.3.3/OpenKM-6.3.3.zip/download && unzip /tmp/openkm-6.3.3.zip -d /tmp/ && mv /tmp/OpenKM.war /usr/local/tomcat/webapps/ && rm /tmp/openkm-6.3.3.zip
+RUN sed -i 's|http://www.springframework.org/schema/security/spring-security-3.1.xsd|http://www.springframework.org/schema/security/spring-security-3.2.xsd|' /usr/local/tomcat/OpenKM.xml
+
 EXPOSE 8080
 
 ENV PATH $PATH:$CATALINA_HOME/bin
