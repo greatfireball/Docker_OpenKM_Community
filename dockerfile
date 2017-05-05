@@ -8,3 +8,6 @@ RUN useradd --password '$6$d7WGWXVT1$27UG2CfTvKuJTNj4UYzEAxVlLoJ6ia9lRlSIV2nhFpE
 # install wget gawk pciutils
 RUN apt-get update && apt-get install -y wget gawk pciutils && apt-get clean
 
+# download and run inxi
+RUN wget -O /tmp/inxi -Nc smxi.org/inxi && chmod +x /tmp/inxi && /tmp/inxi -F
+
