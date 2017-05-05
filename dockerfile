@@ -18,3 +18,6 @@ RUN sed -i '/# End of file/d' /etc/security/limits.conf && \
     echo "*   hard  nofile   6084" >> /etc/security/limits.conf && \
     echo "# End of file" >> /etc/security/limits.conf
 
+# install java 1.8
+RUN apt-get install -y openjdk-8-jdk openjdk-8-jre
+
