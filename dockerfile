@@ -11,3 +11,10 @@ RUN apt-get update && apt-get install -y wget gawk pciutils && apt-get clean
 # download and run inxi
 RUN wget -O /tmp/inxi -Nc smxi.org/inxi && chmod +x /tmp/inxi && /tmp/inxi -F
 
+# increase ulimit
+RUN sed -i '/#session[[:space:]]*required[[:space:]]*pam_limits.so/s/^#//;' /etc/pam.d/su
+RUN sed -i '/# End of file/d' /etc/security/limits.conf && \
+    echo "*   soft  nofile   6084" >> /etc/security/limits.conf && \
+    echo "*   hard  nofile   6084" >> /etc/security/limits.conf && \
+    echo "# End of file" >> /etc/security/limits.conf
+
