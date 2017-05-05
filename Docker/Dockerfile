@@ -21,7 +21,8 @@ RUN sed -i '/# End of file/d' /etc/security/limits.conf && \
 # install java 1.8
 RUN apt-get install -y openjdk-8-jdk openjdk-8-jre
 
-RUN apt-get -y install libreoffice imagemagick swftools liblog4j1.2-java libgnumail-java ant curl unzip  sudo tar
+# install required software
+RUN apt-get -y install libreoffice imagemagick swftools liblog4j1.2-java libgnumail-java ant curl unzip sudo tar && apt-get clean
 
 ENV CATALINA_HOME /usr/local/tomcat/
 ENV JAVA_HOME /usr/local/java
