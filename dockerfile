@@ -29,5 +29,8 @@ ENV OPENJDK_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
 
 RUN ln -s $OPENJDK_HOME $JAVA_HOME
 
+EXPOSE 8080
+
+
 CMD /usr/local/tomcat/bin/catalina.sh run
 
