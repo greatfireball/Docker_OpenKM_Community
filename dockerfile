@@ -28,9 +28,11 @@ ENV JAVA_HOME /usr/local/java
 ENV OPENJDK_HOME /usr/lib/jvm/java-8-openjdk-amd64/jre/
 
 RUN ln -s $OPENJDK_HOME $JAVA_HOME
+RUN wget -O /usr/local/openkm-tomcat-bundle.zip https://sourceforge.net/projects/openkm/files/6.3.2/openkm-6.3.2-community-tomcat-bundle.zip/download && unzip /usr/local/openkm-tomcat-bundle.zip -d /usr/local/ && rm /usr/local/openkm-tomcat-bundle.zip && ln -s $CATALINA_HOME /opt/openkm
 
 EXPOSE 8080
 
+ENV PATH $PATH:$CATALINA_HOME/bin
 
 CMD /usr/local/tomcat/bin/catalina.sh run
 
